@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="FuncGodotFGDFile" format=3 uid="uid://bshrvggqeouun"]
+
+[ext_resource type="Resource" uid="uid://crgpdahjaj" path="res://addons/func_godot/fgd/func_godot_fgd.tres" id="1_r30lq"]
+[ext_resource type="Resource" uid="uid://bh0f3qebuqolc" path="res://trenchbroom/fgd/area_wallrun.tres" id="2_mnprq"]
+[ext_resource type="Script" uid="uid://drlmgulwbjwqu" path="res://addons/func_godot/src/fgd/func_godot_fgd_file.gd" id="3_d8obj"]
+[ext_resource type="Resource" uid="uid://bhhhsol21gw7x" path="res://trenchbroom/fgd/mover/mover_door.tres" id="3_mnprq"]
+
+[resource]
+script = ExtResource("3_d8obj")
+fgd_name = "SYSTEM 1987"
+base_fgd_files = Array[Resource]([ExtResource("1_r30lq")])
+entity_definitions = Array[Resource]([ExtResource("2_mnprq"), ExtResource("3_mnprq")])
+metadata/_custom_type_script = "uid://drlmgulwbjwqu"

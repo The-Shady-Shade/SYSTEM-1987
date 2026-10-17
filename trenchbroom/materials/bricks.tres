@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b270htunls1uo"]
+
+[ext_resource type="Texture2D" uid="uid://d36dokrx8gli0" path="res://trenchbroom/textures/bricks.png" id="1_usdho"]
+
+[resource]
+albedo_texture = ExtResource("1_usdho")
+metallic_specular = 0.0
+texture_filter = 2

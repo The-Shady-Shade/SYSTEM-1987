@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="FuncGodotFGDSolidClass" format=3 uid="uid://bhhhsol21gw7x"]
+
+[ext_resource type="Script" uid="uid://5cow84q03m6a" path="res://addons/func_godot/src/fgd/func_godot_fgd_solid_class.gd" id="1_nugqo"]
+[ext_resource type="Script" uid="uid://dn7ynrb1ix5gf" path="res://trenchbroom/fgd/mover/mover_door.gd" id="2_pat4q"]
+
+[resource]
+script = ExtResource("1_nugqo")
+global_illumination_mode = 2
+build_occlusion = true
+script_class = ExtResource("2_pat4q")
+classname = "mover_door"
+description = "Door."
+class_properties = Dictionary[String, Variant]({
+"translation": Vector3(0, 7.5, 0)
+})
+node_class = "AnimatableBody3D"
+metadata/_custom_type_script = "uid://5cow84q03m6a"

@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dpcyvwgulrihl"]
+
+[ext_resource type="PackedScene" uid="uid://cpr5yhyqdf4sq" path="res://enemy/camera/mesh/camera.blend" id="1_f4qfb"]
+
+[node name="Camera" type="Node3D" unique_id=284852001]
+
+[node name="camera" parent="." unique_id=1780766110 instance=ExtResource("1_f4qfb")]

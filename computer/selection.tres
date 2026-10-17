@@ -1,0 +1,62 @@
+[gd_resource type="VisualShader" format=3 uid="uid://ckhde8kkp7log"]
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_0xycb"]
+output_port_for_preview = 0
+source = 5
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_wjgvw"]
+parameter_name = "AlbedoTexture"
+texture_type = 1
+texture_filter = 1
+
+[sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_c8mvy"]
+default_input_values = [0, Quaternion(0, 0, 0, 0)]
+op_type = 2
+
+[sub_resource type="VisualShaderNodeBillboard" id="VisualShaderNodeBillboard_0xycb"]
+keep_scale = true
+
+[sub_resource type="VisualShaderNodeRotationByAxis" id="VisualShaderNodeRotationByAxis_wjgvw"]
+default_input_values = [0, Vector3(0, 0, 0), 1, 45.05, 2, Vector3(0, 0, 1)]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_20hv4"]
+input_name = "time"
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_d1kw8"]
+input_name = "vertex"
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_3c1bp"]
+parameter_name = "RotationSpeed"
+default_value_enabled = true
+default_value = 1.0
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_ucmck"]
+operator = 2
+
+[resource]
+modes/depth_draw = 2
+modes/cull = 2
+flags/depth_test_disabled = true
+flags/unshaded = true
+flags/shadows_disabled = true
+nodes/vertex/2/node = SubResource("VisualShaderNodeBillboard_0xycb")
+nodes/vertex/2/position = Vector2(-120, 520)
+nodes/vertex/3/node = SubResource("VisualShaderNodeRotationByAxis_wjgvw")
+nodes/vertex/3/position = Vector2(100, 180)
+nodes/vertex/4/node = SubResource("VisualShaderNodeInput_20hv4")
+nodes/vertex/4/position = Vector2(-540, 240)
+nodes/vertex/5/node = SubResource("VisualShaderNodeInput_d1kw8")
+nodes/vertex/5/position = Vector2(-320, 100)
+nodes/vertex/6/node = SubResource("VisualShaderNodeFloatParameter_3c1bp")
+nodes/vertex/6/position = Vector2(-540, 380)
+nodes/vertex/7/node = SubResource("VisualShaderNodeFloatOp_ucmck")
+nodes/vertex/7/position = Vector2(-140, 260)
+nodes/vertex/connections = PackedInt32Array(5, 0, 3, 0, 6, 0, 7, 1, 4, 0, 7, 0, 7, 0, 3, 1, 2, 0, 0, 10, 3, 0, 0, 0)
+nodes/fragment/0/position = Vector2(800, 160)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_0xycb")
+nodes/fragment/2/position = Vector2(-40, 240)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture2DParameter_wjgvw")
+nodes/fragment/3/position = Vector2(-500, 260)
+nodes/fragment/4/node = SubResource("VisualShaderNodeVectorDecompose_c8mvy")
+nodes/fragment/4/position = Vector2(460, 380)
+nodes/fragment/connections = PackedInt32Array(3, 0, 2, 2, 2, 0, 0, 0, 2, 0, 4, 0, 4, 3, 0, 1)

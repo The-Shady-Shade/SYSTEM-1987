@@ -1,0 +1,14 @@
+[remap]
+
+importer="func_godot.map"
+type="Resource"
+uid="uid://dbif72gfl6tgb"
+path="res://.godot/imported/world.map-2ce2858dc7cba15d0a03887f354bc760.tres"
+
+[deps]
+
+source_file="res://trenchbroom/maps/world.map"
+dest_files=["res://.godot/imported/world.map-2ce2858dc7cba15d0a03887f354bc760.tres"]
+
+[params]
+

@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://b5rd47gixd0ph"]
+
+[ext_resource type="Script" uid="uid://c6yfmumv4y4r8" path="res://player/player.gd" id="1_oul6g"]
+[ext_resource type="Script" uid="uid://5iwhff8h2qg" path="res://player/camera_pivot.gd" id="2_rkbax"]
+[ext_resource type="Script" uid="uid://crhab75rhsw83" path="res://player/fsm/core/player_state_machine.gd" id="3_g1dw6"]
+[ext_resource type="Script" uid="uid://cq83jglddm1ya" path="res://player/fsm/idle_player_state.gd" id="4_yw30f"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2dd1r"]
+
+[node name="Player" type="CharacterBody3D" unique_id=1105059009]
+collision_layer = 2
+script = ExtResource("1_oul6g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=691306739]
+shape = SubResource("CapsuleShape3D_2dd1r")
+debug_color = Color(1, 1, 1, 1)
+
+[node name="CameraPivot" type="Node3D" parent="." unique_id=2128437671 node_paths=PackedStringArray("player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+script = ExtResource("2_rkbax")
+player = NodePath("..")
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=1988986768]
+
+[node name="PlayerStateMachine" type="Node" parent="." unique_id=666174486 node_paths=PackedStringArray("state")]
+script = ExtResource("3_g1dw6")
+state = NodePath("IdlePlayerState")
+metadata/_custom_type_script = "uid://crhab75rhsw83"
+
+[node name="IdlePlayerState" type="Node" parent="PlayerStateMachine" unique_id=1060543513]
+script = ExtResource("4_yw30f")
+metadata/_custom_type_script = "uid://cq83jglddm1ya"

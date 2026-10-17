@@ -1,0 +1,187 @@
+[gd_scene format=3 uid="uid://b5rd47gixd0ph"]
+
+[ext_resource type="Script" uid="uid://c6yfmumv4y4r8" path="res://player/player.gd" id="1_oul6g"]
+[ext_resource type="Script" uid="uid://5iwhff8h2qg" path="res://player/camera/camera_pivot.gd" id="2_rkbax"]
+[ext_resource type="Shader" uid="uid://blletfusyuw65" path="res://world/color_palette.gdshader" id="3_8t03j"]
+[ext_resource type="Script" uid="uid://crhab75rhsw83" path="res://player/fsm/core/player_state_machine.gd" id="3_g1dw6"]
+[ext_resource type="Script" uid="uid://uoffe81ye4a8" path="res://world/color_palette.gd" id="3_hg6s5"]
+[ext_resource type="Script" uid="uid://dglypy2kgbtcg" path="res://player/camera/camera.gd" id="3_yllr7"]
+[ext_resource type="Script" uid="uid://cq83jglddm1ya" path="res://player/fsm/idle_player_state.gd" id="4_yw30f"]
+[ext_resource type="Script" uid="uid://dgwk4qqrnmqxw" path="res://player/light_detector.gd" id="5_2ieo8"]
+[ext_resource type="Script" uid="uid://cdbs8s7f7wlqu" path="res://player/ui.gd" id="5_ebec5"]
+[ext_resource type="Script" uid="uid://uhsedhmrjerk" path="res://player/fsm/walk_player_state.gd" id="5_qjkh3"]
+[ext_resource type="Script" uid="uid://b7l8vbu5fvmi6" path="res://player/fsm/jump_player_state.gd" id="6_g6k8r"]
+[ext_resource type="Script" uid="uid://dqomnaujqfoxc" path="res://player/fsm/fall_player_state.gd" id="7_boad6"]
+[ext_resource type="Script" uid="uid://do2fmvb851023" path="res://player/fsm/wallrun_player_state.gd" id="8_rgyib"]
+[ext_resource type="Script" uid="uid://y66yn7jim1ma" path="res://player/fsm/vault_player_state.gd" id="13_kb6p2"]
+[ext_resource type="Script" uid="uid://2kprquyyvobx" path="res://player/fsm/crouch_player_state.gd" id="15_wodsf"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2dd1r"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_32hag"]
+seed = 52
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wodsf"]
+noise = SubResource("FastNoiseLite_32hag")
+seamless = true
+
+[sub_resource type="Gradient" id="Gradient_wodsf"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.0625, 0.125)
+colors = PackedColorArray(0.15294118, 0.09411765, 0.49411765, 1, 0.92941177, 0.14509805, 0.30588236, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_32hag"]
+gradient = SubResource("Gradient_wodsf")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8t03j"]
+render_priority = 0
+shader = ExtResource("3_8t03j")
+shader_parameter/palette = SubResource("GradientTexture1D_32hag")
+shader_parameter/rows = 1.0
+shader_parameter/cols = 2.0
+shader_parameter/dither_size = 0.0
+shader_parameter/dither_amount = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_2ieo8"]
+size = Vector3(4, 4, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wodsf"]
+size = Vector3(0.5, 0.1, 0.5)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8t03j"]
+
+[node name="Player" type="CharacterBody3D" unique_id=1105059009 node_paths=PackedStringArray("collision_shape", "camera_pivot", "camera", "interaction_ray_cast", "light_detector")]
+collision_layer = 2
+script = ExtResource("1_oul6g")
+collision_shape = NodePath("CollisionShape3D")
+camera_pivot = NodePath("CameraPivot")
+camera = NodePath("CameraPivot/Camera3D")
+interaction_ray_cast = NodePath("CameraPivot/InteractionRayCast")
+light_detector = NodePath("LightViewport/LightDetector")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=691306739]
+shape = SubResource("CapsuleShape3D_2dd1r")
+debug_color = Color(1, 1, 1, 0.41960785)
+
+[node name="CameraPivot" type="Node3D" parent="." unique_id=2128437671 node_paths=PackedStringArray("player", "camera")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+script = ExtResource("2_rkbax")
+player = NodePath("..")
+camera = NodePath("Camera3D")
+head_bob_amplitude = 0.03
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=1988986768]
+cull_mask = 1048543
+script = ExtResource("3_yllr7")
+noise_texture = SubResource("NoiseTexture2D_wodsf")
+
+[node name="ColorPalette" type="MeshInstance3D" parent="CameraPivot" unique_id=1931151832]
+visible = false
+material_override = SubResource("ShaderMaterial_8t03j")
+mesh = SubResource("BoxMesh_2ieo8")
+script = ExtResource("3_hg6s5")
+colors = Array[Color]([Color(0.15294118, 0.09411765, 0.49411765, 1), Color(0.92941177, 0.14509805, 0.30588236, 1), Color(1, 1, 1, 1)])
+
+[node name="InteractionRayCast" type="RayCast3D" parent="CameraPivot" unique_id=848694948]
+target_position = Vector3(0, 0, -10)
+collision_mask = 9
+collide_with_areas = true
+
+[node name="VaultShapeCast" type="ShapeCast3D" parent="." unique_id=521246508]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.75)
+shape = SubResource("BoxShape3D_wodsf")
+target_position = Vector3(0, 0, 0)
+collide_with_areas = true
+debug_shape_custom_color = Color(0.7750634, 0.7750634, 0.7750634, 1)
+
+[node name="VaultRayCastUp" type="RayCast3D" parent="VaultShapeCast" unique_id=672058149]
+target_position = Vector3(0, 2, 0)
+collide_with_areas = true
+
+[node name="VaultRayCastDown" type="RayCast3D" parent="VaultShapeCast" unique_id=877561533]
+target_position = Vector3(0, -2, 0)
+collide_with_areas = true
+
+[node name="UI" type="Control" parent="." unique_id=564714222 node_paths=PackedStringArray("player", "light_bar")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("5_ebec5")
+player = NodePath("..")
+light_bar = NodePath("LightBar")
+
+[node name="LightBar" type="ProgressBar" parent="UI" unique_id=210722136]
+custom_minimum_size = Vector2(256, 24)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -27.0
+offset_right = 2.0
+grow_horizontal = 2
+grow_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -24)
+value = 100.0
+show_percentage = false
+
+[node name="LightViewport" type="SubViewport" parent="." unique_id=1673701765]
+handle_input_locally = false
+size = Vector2i(256, 256)
+
+[node name="LightDetector" type="Node3D" parent="LightViewport" unique_id=65164485 node_paths=PackedStringArray("player", "light_viewport")]
+script = ExtResource("5_2ieo8")
+player = NodePath("../..")
+light_viewport = NodePath("..")
+
+[node name="Camera3D" type="Camera3D" parent="LightViewport/LightDetector" unique_id=214908575]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1, 0)
+fov = 40.0
+
+[node name="MeshPlane" type="MeshInstance3D" parent="LightViewport/LightDetector" unique_id=909994516]
+layers = 32
+mesh = SubResource("PlaneMesh_8t03j")
+
+[node name="PlayerStateMachine" type="Node" parent="." unique_id=666174486 node_paths=PackedStringArray("state")]
+script = ExtResource("3_g1dw6")
+state = NodePath("IdlePlayerState")
+metadata/_custom_type_script = "uid://crhab75rhsw83"
+
+[node name="IdlePlayerState" type="Node" parent="PlayerStateMachine" unique_id=1060543513]
+script = ExtResource("4_yw30f")
+metadata/_custom_type_script = "uid://cq83jglddm1ya"
+
+[node name="WalkPlayerState" type="Node" parent="PlayerStateMachine" unique_id=947402301]
+script = ExtResource("5_qjkh3")
+metadata/_custom_type_script = "uid://uhsedhmrjerk"
+
+[node name="JumpPlayerState" type="Node" parent="PlayerStateMachine" unique_id=1135822307 node_paths=PackedStringArray("vault_shape_cast", "vault_ray_cast_up")]
+script = ExtResource("6_g6k8r")
+vault_shape_cast = NodePath("../../VaultShapeCast")
+vault_ray_cast_up = NodePath("../../VaultShapeCast/VaultRayCastUp")
+metadata/_custom_type_script = "uid://b7l8vbu5fvmi6"
+
+[node name="FallPlayerState" type="Node" parent="PlayerStateMachine" unique_id=1457986360]
+script = ExtResource("7_boad6")
+metadata/_custom_type_script = "uid://dqomnaujqfoxc"
+
+[node name="CrouchPlayerState" type="Node" parent="PlayerStateMachine" unique_id=520202565]
+script = ExtResource("15_wodsf")
+metadata/_custom_type_script = "uid://2kprquyyvobx"
+
+[node name="VaultPlayerState" type="Node" parent="PlayerStateMachine" unique_id=673058849 node_paths=PackedStringArray("vault_shape_cast", "vault_ray_cast_down")]
+script = ExtResource("13_kb6p2")
+vault_shape_cast = NodePath("../../VaultShapeCast")
+vault_ray_cast_down = NodePath("../../VaultShapeCast/VaultRayCastDown")
+metadata/_custom_type_script = "uid://y66yn7jim1ma"
+
+[node name="WallrunPlayerState" type="Node" parent="PlayerStateMachine" unique_id=1037639331]
+script = ExtResource("8_rgyib")
+metadata/_custom_type_script = "uid://do2fmvb851023"
