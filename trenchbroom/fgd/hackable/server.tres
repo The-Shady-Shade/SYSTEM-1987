@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="FuncGodotFGDPointClass" format=3 uid="uid://cloifa2volopf"]
+
+[ext_resource type="Script" uid="uid://d1nwwgcrner8b" path="res://addons/func_godot/src/fgd/func_godot_fgd_point_class_display_descriptor.gd" id="1_pf1u3"]
+[ext_resource type="PackedScene" uid="uid://da66t48fiam1a" path="res://hackable/server/server.tscn" id="2_dkvxv"]
+[ext_resource type="Script" uid="uid://cxsqwtsqd8w33" path="res://addons/func_godot/src/fgd/func_godot_fgd_point_class.gd" id="2_iocvb"]
+
+[resource]
+script = ExtResource("2_iocvb")
+scene_file = ExtResource("2_dkvxv")
+classname = "server"
+description = "Server."
+class_properties = Dictionary[String, Variant]({
+"target_name": ""
+})
+meta_properties = Dictionary[String, Variant]({
+"color": Color(0.23137255, 0.93333334, 0.9607843, 1),
+"size": AABB(-32, -32, -48, 32, 32, 48)
+})
+metadata/_custom_type_script = "uid://cxsqwtsqd8w33"

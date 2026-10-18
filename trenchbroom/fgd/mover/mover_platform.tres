@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="FuncGodotFGDSolidClass" format=3 uid="uid://44sjydumkwqb"]
+
+[ext_resource type="Script" uid="uid://5cow84q03m6a" path="res://addons/func_godot/src/fgd/func_godot_fgd_solid_class.gd" id="1_3ahbk"]
+[ext_resource type="Script" uid="uid://cjoc2xunmpcmk" path="res://trenchbroom/fgd/mover/mover_platform.gd" id="2_huatg"]
+
+[resource]
+script = ExtResource("1_3ahbk")
+global_illumination_mode = 2
+build_occlusion = true
+collision_mask = 0
+script_class = ExtResource("2_huatg")
+classname = "mover_platform"
+description = "Moving Platform."
+class_properties = Dictionary[String, Variant]({
+"active": true,
+"move_timer": 2.0,
+"target_name": "",
+"translation": Vector3(0, 0, 0),
+"wait_timer": 0.5
+})
+meta_properties = Dictionary[String, Variant]({
+"color": Color(0.92941177, 0.93333334, 0.30588236, 1),
+"size": AABB(-8, -8, -8, 8, 8, 8)
+})
+node_class = "AnimatableBody3D"
+metadata/_custom_type_script = "uid://5cow84q03m6a"

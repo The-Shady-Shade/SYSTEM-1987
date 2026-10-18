@@ -1,0 +1,14 @@
+[remap]
+
+importer="func_godot.map"
+type="Resource"
+uid="uid://bawax48xarmku"
+path="res://.godot/imported/memory_leak.4.map-946c5231aa3f93e268990c4cac568f17.tres"
+
+[deps]
+
+source_file="res://trenchbroom/maps/autosave/memory_leak.4.map"
+dest_files=["res://.godot/imported/memory_leak.4.map-946c5231aa3f93e268990c4cac568f17.tres"]
+
+[params]
+

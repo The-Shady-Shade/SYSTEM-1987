@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bxd433x3h8bwk"]
+
+[ext_resource type="Shader" uid="uid://bhqbsfum0372" path="res://global/holographic.gdshader" id="1_4sh5k"]
+
+[resource]
+render_priority = 13
+shader = ExtResource("1_4sh5k")
+shader_parameter/glow_color = Color(0.34901962, 0.9490196, 0, 1)
+shader_parameter/fresnel_power = 1.2
+shader_parameter/base_alpha = 1.0
+shader_parameter/rim_strength = 2.0
+shader_parameter/edge_strength = 1.4
+shader_parameter/edge_start = 0.55
+shader_parameter/scanline_count = 160.0
+shader_parameter/scanline_strength = 1.0
+shader_parameter/scanline_speed = 0.25
+shader_parameter/flicker_strength = 0.05

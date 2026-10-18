@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="FuncGodotFGDSolidClass" format=3 uid="uid://c7amngj18fpa6"]
+
+[ext_resource type="Script" uid="uid://5cow84q03m6a" path="res://addons/func_godot/src/fgd/func_godot_fgd_solid_class.gd" id="1_7aw6x"]
+[ext_resource type="Script" uid="uid://m4wl32yvuqjo" path="res://trenchbroom/fgd/area/area_kill.gd" id="2_5fwn3"]
+
+[resource]
+script = ExtResource("1_7aw6x")
+build_visuals = false
+global_illumination_mode = 0
+use_in_baked_light = false
+shadow_casting_setting = 0
+render_layers = 0
+collision_layer = 0
+collision_mask = 2
+script_class = ExtResource("2_5fwn3")
+classname = "area_kill"
+description = "Kills Player on Collision."
+meta_properties = Dictionary[String, Variant]({
+"color": Color(0.92941177, 0.14509805, 0.30588236, 1),
+"size": AABB(-8, -8, -8, 8, 8, 8)
+})
+node_class = "Area3D"
+metadata/_custom_type_script = "uid://5cow84q03m6a"

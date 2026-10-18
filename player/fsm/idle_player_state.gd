@@ -1,9 +1,5 @@
 class_name IdlePlayerState extends PlayerState
 
-func enter(_previous_state: PlayerState) -> void:
-	player.previous_vault_wall = player.get_rid()
-	player.new_vault_wall = player.get_rid()
-
 func update(delta: float) -> void:
 	player.update_movement(spd, acc, delta)
 	player.update_gravity(delta)

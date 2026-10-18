@@ -6,10 +6,6 @@ class_name CameraPivot extends Node3D
 var mouse_rotation: Vector3 = Vector3.ZERO
 var rotation_input: float = 0.0
 var tilt_input: float = 0.0
-@export_group("Recoil")
-@export var snap_amount: float = 10.0
-@export var recoil_spd: float = 20.0
-var target_rotation: Vector3 = Vector3.ZERO
 @export_group("Head Bob")
 @export var head_bob_frequency: float = 2.0
 @export var head_bob_amplitude: float = 0.04
@@ -37,16 +33,16 @@ func _process(delta: float) -> void:
 	tilt_input = 0.0
 	
 	head_bob_time += player.velocity.length() * (player.is_on_floor() as float) * delta
-	camera.transform.origin = update_head_bob()
+	camera.transform.origin = head_bob()
 	
-	target_rotation = lerp(target_rotation, Vector3.ZERO, recoil_spd * delta)
-	rotation_degrees = lerp(rotation_degrees, target_rotation, snap_amount * delta)
+	side_tilt(delta)
 
-func update_head_bob() -> Vector3:
-	var head_bob_position = Vector3.ZERO
-	head_bob_position.x = cos(head_bob_time * head_bob_frequency / 2) * head_bob_amplitude
-	head_bob_position.y = sin(head_bob_time * head_bob_frequency) * head_bob_amplitude
+func head_bob() -> Vector3:
+	var head_bob_position = position
+	head_bob_position.x += cos(head_bob_time * head_bob_frequency / 2) * head_bob_amplitude
+	head_bob_position.y += sin(head_bob_time * head_bob_frequency) * head_bob_amplitude
 	return head_bob_position
 
-func add_recoil(recoil_amount: Vector3) -> void:
-	target_rotation += Vector3(randf_range(recoil_amount.x, recoil_amount.x * 2.0), randf_range(recoil_amount.y, recoil_amount.y * 2.0), randf_range(-recoil_amount.z, recoil_amount.z))
+func side_tilt(delta: float) -> void:
+	var input_dir_x: float = Input.get_vector("left", "right", "forward", "backward").x
+	rotation.z = lerp(rotation.z, -input_dir_x * 0.1, 5.0 * delta)

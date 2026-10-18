@@ -10,12 +10,14 @@ config_version=5
 
 [application]
 
-config/name="SYSTEM 1987"
+config/name="SYSTEM-1987"
 config/version="1.0.0"
 config/tags=PackedStringArray("3d", "itch_io", "ludum_dare")
 run/main_scene="uid://buo1730adb02i"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0.023529412, 0.011764706, 0.14117648, 1)
+boot_splash/show_image=false
+config/icon="uid://m2l12xx60tpj"
 
 [audio]
 
@@ -37,6 +39,10 @@ window/stretch/aspect="expand"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/func_godot/plugin.cfg")
+
+[gui]
+
+theme/custom="uid://dtfr17cmbsy7v"
 
 [input]
 
@@ -83,8 +89,7 @@ interact={
 3d_physics/layer_1="Environment"
 3d_physics/layer_2="Player"
 3d_physics/layer_3="Enemy"
-3d_physics/layer_4="Computer"
-3d_physics/layer_17="AreaWallrun"
+3d_physics/layer_4="Hackable"
 
 [physics]
 
@@ -92,6 +97,18 @@ interact={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=3
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/ssao/quality=1
+environment/ssil/quality=1
+scaling_3d/mode=5
+scaling_3d/mode.ios=5
+scaling_3d/mode.macos=5
+scaling_3d/scale=0.5
+environment/glow/upscale_mode=0
+environment/volumetric_fog/use_filter=0
+environment/defaults/default_clear_color=Color(0.023529412, 0.011764706, 0.14117648, 1)
+occlusion_culling/use_occlusion_culling=true
+environment/defaults/default_environment="uid://ct72uddxu1c02"

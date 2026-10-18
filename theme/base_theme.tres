@@ -1,0 +1,12 @@
+[gd_resource type="Theme" format=3 uid="uid://dtfr17cmbsy7v"]
+
+[ext_resource type="FontFile" uid="uid://vqhojnqd765g" path="res://theme/boldpixels.ttf" id="1_21fca"]
+
+[resource]
+default_font = ExtResource("1_21fca")
+default_font_size = 32
+MarginContainer/constants/margin_bottom = 8
+MarginContainer/constants/margin_left = 16
+MarginContainer/constants/margin_right = 16
+MarginContainer/constants/margin_top = 8
+VBoxContainer/constants/separation = 16

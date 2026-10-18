@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://da66t48fiam1a"]
+
+[ext_resource type="Script" uid="uid://c0knjdytk7mk6" path="res://hackable/server/server.gd" id="1_581qi"]
+[ext_resource type="PackedScene" uid="uid://hboig4ix6dtm" path="res://hackable/server/mesh/server.blend" id="2_43p42"]
+[ext_resource type="Shader" uid="uid://ckhde8kkp7log" path="res://hackable/selection.tres" id="2_nrxv8"]
+[ext_resource type="Texture2D" uid="uid://gg6h6hp61vc8" path="res://hackable/selection.png" id="3_objvc"]
+[ext_resource type="Texture2D" uid="uid://b3e7ws8j8j03j" path="res://hackable/interaction_key.png" id="4_fhq24"]
+[ext_resource type="AudioStream" uid="uid://bhfe8lfms68rt" path="res://hackable/selection.wav" id="5_l2xy7"]
+[ext_resource type="AudioStream" uid="uid://b7o6v3jd058ip" path="res://hackable/interaction.wav" id="6_0ot4e"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2dd1r"]
+radius = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_olryk"]
+render_priority = 24
+shader = ExtResource("2_nrxv8")
+shader_parameter/RotationSpeed = 2.0
+shader_parameter/AlbedoTexture = ExtResource("3_objvc")
+
+[sub_resource type="QuadMesh" id="QuadMesh_2dd1r"]
+size = Vector2(3, 3)
+
+[node name="Server" type="Node3D" unique_id=615380423 node_paths=PackedStringArray("selection_instance", "hack_key", "selection_sound", "hack_sound")]
+script = ExtResource("1_581qi")
+selection_instance = NodePath("SelectionInstance")
+hack_key = NodePath("HackKey")
+selection_sound = NodePath("SelectionSound")
+hack_sound = NodePath("HackSound")
+
+[node name="Mesh" parent="." unique_id=1336837536 instance=ExtResource("2_43p42")]
+
+[node name="SelectionArea" type="Area3D" parent="." unique_id=1350524045]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SelectionArea" unique_id=1322958244]
+shape = SubResource("SphereShape3D_2dd1r")
+
+[node name="SelectionInstance" type="MeshInstance3D" parent="." unique_id=2040107184]
+visible = false
+material_override = SubResource("ShaderMaterial_olryk")
+mesh = SubResource("QuadMesh_2dd1r")
+
+[node name="HackKey" type="Sprite3D" parent="." unique_id=1297813431]
+visible = false
+pixel_size = 0.075
+billboard = 1
+no_depth_test = true
+texture_filter = 2
+render_priority = 5
+texture = ExtResource("4_fhq24")
+
+[node name="SelectionSound" type="AudioStreamPlayer" parent="." unique_id=1351364907]
+stream = ExtResource("5_l2xy7")
+bus = &"SFX"
+
+[node name="HackSound" type="AudioStreamPlayer" parent="." unique_id=447765394]
+stream = ExtResource("6_0ot4e")
+bus = &"SFX"

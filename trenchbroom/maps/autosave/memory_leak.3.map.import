@@ -1,0 +1,14 @@
+[remap]
+
+importer="func_godot.map"
+type="Resource"
+uid="uid://l65a7myt2ku1"
+path="res://.godot/imported/memory_leak.3.map-ec6a926bbfb23f0e9b2bad11fa378d91.tres"
+
+[deps]
+
+source_file="res://trenchbroom/maps/autosave/memory_leak.3.map"
+dest_files=["res://.godot/imported/memory_leak.3.map-ec6a926bbfb23f0e9b2bad11fa378d91.tres"]
+
+[params]
+

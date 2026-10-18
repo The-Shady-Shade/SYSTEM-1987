@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://dds0u5sm86l1o"]
+
+[ext_resource type="Material" uid="uid://bahwak2x1d10g" path="res://global/post_process/vhs.tres" id="1_chmv6"]
+[ext_resource type="Script" uid="uid://c1p5sno2ou4ii" path="res://menu/main_menu.gd" id="1_f5okj"]
+
+[node name="MainMenu" type="Control" unique_id=1379681778 node_paths=PackedStringArray("terminal_label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f5okj")
+map_path = "uid://buo1730adb02i"
+terminal_label = NodePath("MarginContainer/TerminalLabel")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=493072907]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TerminalLabel" type="RichTextLabel" parent="MarginContainer" unique_id=639054131]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "BIOS v1.987
+MEMORY CHECK ........ OK
+HARDWARE STATUS ..... OLD
+NETWORK CONNECTION .. OFFLINE"
+
+[node name="VhsRect" type="ColorRect" parent="." unique_id=301367223]
+z_index = 5
+material = ExtResource("1_chmv6")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

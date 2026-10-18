@@ -1,0 +1,14 @@
+[remap]
+
+importer="func_godot.map"
+type="Resource"
+uid="uid://pdkepmn5is0l"
+path="res://.godot/imported/boot_sequence.1.map-232dda9c7ba37028e715ae80d1d5ecce.tres"
+
+[deps]
+
+source_file="res://trenchbroom/maps/autosave/boot_sequence.1.map"
+dest_files=["res://.godot/imported/boot_sequence.1.map-232dda9c7ba37028e715ae80d1d5ecce.tres"]
+
+[params]
+

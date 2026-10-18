@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="FuncGodotFGDPointClass" format=3 uid="uid://mbaif3vfe7n5"]
+
+[ext_resource type="Script" uid="uid://d1nwwgcrner8b" path="res://addons/func_godot/src/fgd/func_godot_fgd_point_class_display_descriptor.gd" id="1_hul4d"]
+[ext_resource type="Script" uid="uid://cxsqwtsqd8w33" path="res://addons/func_godot/src/fgd/func_godot_fgd_point_class.gd" id="2_0druo"]
+[ext_resource type="PackedScene" uid="uid://b5rd47gixd0ph" path="res://player/player.tscn" id="2_ixit8"]
+
+[resource]
+script = ExtResource("2_0druo")
+scene_file = ExtResource("2_ixit8")
+classname = "player"
+description = "Player."
+meta_properties = Dictionary[String, Variant]({
+"color": Color(0.23137255, 0.93333334, 0.30588236, 1),
+"size": AABB(-16, -16, -32, 16, 16, 32)
+})
+metadata/_custom_type_script = "uid://cxsqwtsqd8w33"

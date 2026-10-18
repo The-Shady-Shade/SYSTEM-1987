@@ -11,7 +11,7 @@
 
 [resource]
 script = ExtResource("2_ns6ah")
-game_name = "SYSTEM 1987"
+game_name = "SYSTEM-1987"
 textures_root_folder = "trenchbroom/textures"
 fgd_file = ExtResource("6_oqjvk")
 brush_tags = Array[Resource]([ExtResource("1_oqjvk"), ExtResource("2_yjkv0")])

@@ -9,6 +9,7 @@ func _process(_delta: float) -> void:
 	var texture = light_viewport.get_texture()
 	var color: Color = get_average_color(texture)
 	light = color.get_luminance()
+	#print(light)
 
 func get_average_color(texture: ViewportTexture) -> Color:
 	var image: Image = texture.get_image()

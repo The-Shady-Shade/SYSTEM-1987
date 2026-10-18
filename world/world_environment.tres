@@ -1,8 +1,0 @@
-[gd_resource type="Environment" format=3 uid="uid://ct72uddxu1c02"]
-
-[resource]
-background_mode = 1
-background_color = Color(1, 1, 1, 1)
-tonemap_mode = 2
-glow_bloom = 0.2
-adjustment_enabled = true
