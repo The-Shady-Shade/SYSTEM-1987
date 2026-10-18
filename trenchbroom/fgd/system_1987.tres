@@ -6,7 +6,8 @@
 [ext_resource type="Script" uid="uid://drlmgulwbjwqu" path="res://addons/func_godot/src/fgd/func_godot_fgd_file.gd" id="3_d8obj"]
 [ext_resource type="Resource" uid="uid://bhhhsol21gw7x" path="res://trenchbroom/fgd/mover/mover_door.tres" id="3_mnprq"]
 [ext_resource type="Resource" uid="uid://44sjydumkwqb" path="res://trenchbroom/fgd/mover/mover_platform.tres" id="5_b2fcp"]
-[ext_resource type="Resource" uid="uid://dusa3p0s4ax5d" path="res://trenchbroom/fgd/hackable/enemy/enemy_security_camera.tres" id="7_r3mt2"]
+[ext_resource type="Resource" uid="uid://dusa3p0s4ax5d" path="res://trenchbroom/fgd/hackable/security/security_camera.tres" id="6_r3mt2"]
+[ext_resource type="Resource" uid="uid://dl34dri1pksln" path="res://trenchbroom/fgd/hackable/security/security_drone.tres" id="7_r3mt2"]
 [ext_resource type="Resource" uid="uid://cloifa2volopf" path="res://trenchbroom/fgd/hackable/server.tres" id="8_ef8m4"]
 [ext_resource type="Resource" uid="uid://c7amngj18fpa6" path="res://trenchbroom/fgd/area/area_kill.tres" id="8_r3mt2"]
 
@@ -14,5 +15,5 @@
 script = ExtResource("3_d8obj")
 fgd_name = "SYSTEM-1987"
 base_fgd_files = Array[Resource]([ExtResource("1_r30lq")])
-entity_definitions = Array[Resource]([ExtResource("2_x36n5"), ExtResource("8_ef8m4"), ExtResource("3_mnprq"), ExtResource("5_b2fcp"), ExtResource("7_r3mt2"), ExtResource("2_d8obj"), ExtResource("8_r3mt2")])
+entity_definitions = Array[Resource]([ExtResource("2_x36n5"), ExtResource("8_ef8m4"), ExtResource("3_mnprq"), ExtResource("5_b2fcp"), ExtResource("6_r3mt2"), ExtResource("7_r3mt2"), ExtResource("2_d8obj"), ExtResource("8_r3mt2")])
 metadata/_custom_type_script = "uid://drlmgulwbjwqu"

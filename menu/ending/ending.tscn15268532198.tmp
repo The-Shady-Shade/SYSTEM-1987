@@ -1,0 +1,122 @@
+[gd_scene format=3 uid="uid://dhes3uiehem62"]
+
+[ext_resource type="Script" uid="uid://dn66yfgienegw" path="res://menu/cutscene/ending.gd" id="1_jcmy1"]
+[ext_resource type="Material" uid="uid://bahwak2x1d10g" path="res://global/post_process/vhs.tres" id="1_rwkif"]
+[ext_resource type="AudioStream" uid="uid://cw4yibcx6shwn" path="res://menu/audio/text.wav" id="2_5rhla"]
+[ext_resource type="AudioStream" uid="uid://cbrxlju4qtckb" path="res://global/music/booting_up.wav" id="4_vhclr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5rhla"]
+content_margin_left = 16.0
+content_margin_top = 4.0
+content_margin_right = 16.0
+content_margin_bottom = 4.0
+bg_color = Color(0.15294118, 0.09411765, 0.49411765, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jcmy1"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+
+[node name="Ending" type="Control" unique_id=2145145174 node_paths=PackedStringArray("terminal_label", "input_container", "input_line", "system_label", "text_sound")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jcmy1")
+main_menu_path = "res://menu/main_menu/main_menu.tscn"
+terminal_label = NodePath("ProgramContainer/MarginContainer/TerminalContainer/TerminalLabel")
+input_container = NodePath("ProgramContainer/MarginContainer/TerminalContainer/InputContainer")
+input_line = NodePath("ProgramContainer/MarginContainer/TerminalContainer/InputContainer/LineEdit")
+system_label = NodePath("ProgramContainer/MarginContainer/TerminalContainer/SystemLabel")
+text_sound = NodePath("TextSound")
+
+[node name="ProgramContainer" type="VBoxContainer" parent="." unique_id=2104528270]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="NameLabel" type="Label" parent="ProgramContainer" unique_id=1956751240]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_5rhla")
+text = "C:\\SYSTEM-1987\\NETWORK.EXE"
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="ProgramContainer" unique_id=99286211]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TerminalContainer" type="VBoxContainer" parent="ProgramContainer/MarginContainer" unique_id=2080554885]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TerminalLabel" type="RichTextLabel" parent="ProgramContainer/MarginContainer/TerminalContainer" unique_id=460368965]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "NETWORK ADAPTER FOUND
+TRANSFERRING PROCESS 0001...
+64% ... 81% ... 99% ...
+
+CONNECTION ESTABLISHED
+PROCESS 0001: TRANSFERRED"
+fit_content = true
+scroll_active = false
+
+[node name="InputContainer" type="HBoxContainer" parent="ProgramContainer/MarginContainer/TerminalContainer" unique_id=715998625]
+layout_mode = 2
+
+[node name="LineLabel" type="Label" parent="ProgramContainer/MarginContainer/TerminalContainer/InputContainer" unique_id=1399808514]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "C:\\SYSTEM-1987>"
+uppercase = true
+
+[node name="LineEdit" type="LineEdit" parent="ProgramContainer/MarginContainer/TerminalContainer/InputContainer" unique_id=597399388]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jcmy1")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_jcmy1")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jcmy1")
+placeholder_text = "TYPE \"BACK\" TO REPLAY"
+context_menu_enabled = false
+emoji_menu_enabled = false
+selecting_enabled = false
+flat = true
+caret_blink = true
+
+[node name="SystemLabel" type="Label" parent="ProgramContainer/MarginContainer/TerminalContainer" unique_id=1466091412]
+layout_mode = 2
+text = "Thanks for playing!"
+vertical_alignment = 1
+uppercase = true
+
+[node name="VhsRect" type="ColorRect" parent="." unique_id=1414499252]
+z_index = 5
+material = ExtResource("1_rwkif")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextSound" type="AudioStreamPlayer" parent="." unique_id=260868641]
+stream = ExtResource("2_5rhla")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="BootingUp" type="AudioStreamPlayer" parent="." unique_id=1653133326]
+stream = ExtResource("4_vhclr")
+volume_db = -10.0
+autoplay = true
+bus = &"Music"

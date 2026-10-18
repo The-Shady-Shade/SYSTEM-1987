@@ -1,0 +1,77 @@
+[gd_resource type="Theme" format=3 uid="uid://dtfr17cmbsy7v"]
+
+[ext_resource type="FontFile" uid="uid://vqhojnqd765g" path="res://menu/theme/boldpixels.ttf" id="1_2vh02"]
+
+[sub_resource type="Image" id="Image_rcun6"]
+data = {
+"data": PackedByteArray(255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255),
+"format": "RGBA8",
+"height": 2,
+"mipmaps": false,
+"width": 2
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_fe8tv"]
+image = SubResource("Image_rcun6")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rjptb"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_macv0"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+
+[resource]
+default_font = ExtResource("1_2vh02")
+default_font_size = 32
+Label/colors/font_color = Color(0.96862745, 0.96862745, 1, 1)
+Label/colors/font_shadow_color = Color(0.15294118, 0.09411765, 0.49411765, 0.39215687)
+Label/constants/shadow_outline_size = 4
+LineEdit/colors/caret_color = Color(0.96862745, 0.96862745, 1, 1)
+LineEdit/colors/font_color = Color(0.96862745, 0.96862745, 1, 1)
+LineEdit/colors/font_outline_color = Color(0.15294118, 0.09411765, 0.49411765, 0.39215687)
+LineEdit/colors/font_uneditable_color = Color(0.96862745, 0.96862745, 1, 1)
+LineEdit/colors/selection_color = Color(0.92941177, 0.14509805, 0.30588236, 1)
+LineEdit/constants/caret_width = 2
+LineEdit/constants/outline_size = 4
+MarginContainer/constants/margin_bottom = 8
+MarginContainer/constants/margin_left = 16
+MarginContainer/constants/margin_right = 16
+MarginContainer/constants/margin_top = 8
+RichTextLabel/colors/default_color = Color(0.96862745, 0.96862745, 1, 1)
+RichTextLabel/colors/font_outline_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/font_selected_color = Color(0, 0, 0, 0)
+RichTextLabel/colors/font_shadow_color = Color(0.15294118, 0.09411765, 0.49411765, 0.39215687)
+RichTextLabel/colors/selection_color = Color(0.1, 0.1, 1, 0.8)
+RichTextLabel/colors/table_border = Color(0, 0, 0, 0)
+RichTextLabel/colors/table_even_row_bg = Color(0, 0, 0, 0)
+RichTextLabel/colors/table_odd_row_bg = Color(0, 0, 0, 0)
+RichTextLabel/constants/line_separation = 0
+RichTextLabel/constants/outline_size = 0
+RichTextLabel/constants/paragraph_separation = 0
+RichTextLabel/constants/shadow_offset_x = 1
+RichTextLabel/constants/shadow_outline_size = 4
+RichTextLabel/icons/horizontal_rule = SubResource("ImageTexture_fe8tv")
+RichTextLabel/styles/focus = SubResource("StyleBoxFlat_rjptb")
+RichTextLabel/styles/normal = SubResource("StyleBoxEmpty_macv0")
+VBoxContainer/constants/separation = 16

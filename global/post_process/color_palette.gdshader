@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode unshaded, cull_front, depth_test_disabled;
+render_mode unshaded, cull_disabled, depth_test_disabled;
 
 uniform sampler2D SCREEN_TEXTURE: hint_screen_texture;
 const float lin = 0.454545;

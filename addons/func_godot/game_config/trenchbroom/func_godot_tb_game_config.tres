@@ -7,11 +7,12 @@
 [ext_resource type="Resource" uid="uid://co2sb1ng7cw4i" path="res://addons/func_godot/game_config/trenchbroom/tb_brush_tag_trigger.tres" id="2_yjkv0"]
 [ext_resource type="Resource" uid="uid://bkjxc54mmdhbo" path="res://addons/func_godot/game_config/trenchbroom/tb_face_tag_origin.tres" id="3_stisi"]
 [ext_resource type="Resource" uid="uid://bshrvggqeouun" path="res://trenchbroom/fgd/system_1987.tres" id="6_oqjvk"]
-[ext_resource type="Texture2D" uid="uid://decwujsyhj0qy" path="res://addons/func_godot/icon32.png" id="7_yjkv0"]
+[ext_resource type="Texture2D" uid="uid://deymntxkytort" path="res://global/distribution/icon_big.png" id="7_oqjvk"]
 
 [resource]
 script = ExtResource("2_ns6ah")
 game_name = "SYSTEM-1987"
+icon = ExtResource("7_oqjvk")
 textures_root_folder = "trenchbroom/textures"
 fgd_file = ExtResource("6_oqjvk")
 brush_tags = Array[Resource]([ExtResource("1_oqjvk"), ExtResource("2_yjkv0")])

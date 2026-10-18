@@ -1,0 +1,157 @@
+[gd_scene format=3 uid="uid://dds0u5sm86l1o"]
+
+[ext_resource type="Script" uid="uid://c1p5sno2ou4ii" path="res://menu/main_menu/main_menu.gd" id="1_qs6vt"]
+[ext_resource type="Material" uid="uid://bahwak2x1d10g" path="res://global/post_process/vhs.tres" id="2_7r8i1"]
+[ext_resource type="AudioStream" uid="uid://cw4yibcx6shwn" path="res://menu/audio/text.wav" id="3_winya"]
+[ext_resource type="AudioStream" uid="uid://b7o32hyrxelim" path="res://menu/audio/submit.wav" id="4_prid6"]
+[ext_resource type="AudioStream" uid="uid://d23y8df2h6es2" path="res://menu/audio/error.wav" id="5_x87vx"]
+[ext_resource type="AudioStream" uid="uid://cbrxlju4qtckb" path="res://global/music/booting_up.wav" id="6_prid6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2dd1r"]
+content_margin_left = 16.0
+content_margin_top = 4.0
+content_margin_right = 16.0
+content_margin_bottom = 4.0
+bg_color = Color(0.15294118, 0.09411765, 0.49411765, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o5w3e"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+
+[node name="MainMenu" type="Control" unique_id=1379681778 node_paths=PackedStringArray("boot_label", "system_label", "command_label", "input_container", "input_line", "log_label", "text_sound", "submit_sound", "error_sound")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qs6vt")
+map_path = "uid://buo1730adb02i"
+settings_path = "uid://0b1j8jbc7pdi"
+boot_label = NodePath("ProgramContainer/MarginContainer/TerminalContainer/BootLabel")
+system_label = NodePath("ProgramContainer/MarginContainer/TerminalContainer/SystemLabel")
+command_label = NodePath("ProgramContainer/MarginContainer/TerminalContainer/CommandLabel")
+input_container = NodePath("ProgramContainer/MarginContainer/TerminalContainer/InputContainer")
+input_line = NodePath("ProgramContainer/MarginContainer/TerminalContainer/InputContainer/LineEdit")
+log_label = NodePath("ProgramContainer/MarginContainer/TerminalContainer/LogLabel")
+text_sound = NodePath("TextSound")
+submit_sound = NodePath("SubmitSound")
+error_sound = NodePath("ErrorSound")
+
+[node name="ProgramContainer" type="VBoxContainer" parent="." unique_id=635083001]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="NameLabel" type="Label" parent="ProgramContainer" unique_id=878037396]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_2dd1r")
+text = "C:\\SYSTEM-1987\\CMD.EXE"
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="ProgramContainer" unique_id=493072907]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TerminalContainer" type="VBoxContainer" parent="ProgramContainer/MarginContainer" unique_id=1002080289]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="BootLabel" type="RichTextLabel" parent="ProgramContainer/MarginContainer/TerminalContainer" unique_id=639054131]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "C:\\SYSTEM-1987> BOOT.EXE
+BIOS v1.987
+MEMORY CHECK ........ OK
+HARDWARE STATUS ..... OLD
+NETWORK CONNECTION .. OFFLINE
+
+WARNING: UNKNOWN PROCESS DETECTED
+SYSTEM INTEGRITY: COMPROMISED"
+fit_content = true
+scroll_active = false
+
+[node name="SystemLabel" type="Label" parent="ProgramContainer/MarginContainer/TerminalContainer" unique_id=183218145]
+layout_mode = 2
+text = "SYSTEM-1987"
+vertical_alignment = 1
+uppercase = true
+
+[node name="CommandLabel" type="RichTextLabel" parent="ProgramContainer/MarginContainer/TerminalContainer" unique_id=1855791170]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "AVAILABLE COMMANDS:
+  PLAY      - START THE GAME
+  SETTINGS  - CONFIGURE SETTINGS"
+fit_content = true
+scroll_active = false
+
+[node name="InputContainer" type="HBoxContainer" parent="ProgramContainer/MarginContainer/TerminalContainer" unique_id=373066571]
+layout_mode = 2
+
+[node name="LineLabel" type="Label" parent="ProgramContainer/MarginContainer/TerminalContainer/InputContainer" unique_id=346584982]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "C:\\SYSTEM-1987>"
+uppercase = true
+
+[node name="LineEdit" type="LineEdit" parent="ProgramContainer/MarginContainer/TerminalContainer/InputContainer" unique_id=1998124614]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxEmpty_o5w3e")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_o5w3e")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o5w3e")
+placeholder_text = "TYPE HERE"
+context_menu_enabled = false
+emoji_menu_enabled = false
+selecting_enabled = false
+flat = true
+caret_blink = true
+
+[node name="LogLabel" type="RichTextLabel" parent="ProgramContainer/MarginContainer/TerminalContainer" unique_id=475159247]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "UNKNOWN COMMAND"
+fit_content = true
+
+[node name="VhsRect" type="ColorRect" parent="." unique_id=301367223]
+z_index = 5
+material = ExtResource("2_7r8i1")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextSound" type="AudioStreamPlayer" parent="." unique_id=163823986]
+stream = ExtResource("3_winya")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="SubmitSound" type="AudioStreamPlayer" parent="." unique_id=2002756411]
+stream = ExtResource("4_prid6")
+bus = &"SFX"
+
+[node name="ErrorSound" type="AudioStreamPlayer" parent="." unique_id=650444668]
+stream = ExtResource("5_x87vx")
+bus = &"SFX"
+
+[node name="BootingUp" type="AudioStreamPlayer" parent="." unique_id=507331237]
+stream = ExtResource("6_prid6")
+volume_db = -10.0
+autoplay = true
+bus = &"Music"

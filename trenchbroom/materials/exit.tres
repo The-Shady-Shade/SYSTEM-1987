@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://bxd433x3h8bwk"]
 
-[ext_resource type="Shader" uid="uid://bhqbsfum0372" path="res://global/holographic.gdshader" id="1_4sh5k"]
+[ext_resource type="Shader" uid="uid://bhqbsfum0372" path="res://trenchbroom/materials/holographic.gdshader" id="1_4sh5k"]
 
 [resource]
 render_priority = 13

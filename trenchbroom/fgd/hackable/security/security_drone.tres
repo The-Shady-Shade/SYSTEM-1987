@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="FuncGodotFGDPointClass" format=3 uid="uid://dl34dri1pksln"]
+
+[ext_resource type="Script" uid="uid://d1nwwgcrner8b" path="res://addons/func_godot/src/fgd/func_godot_fgd_point_class_display_descriptor.gd" id="1_klojo"]
+[ext_resource type="Script" uid="uid://cxsqwtsqd8w33" path="res://addons/func_godot/src/fgd/func_godot_fgd_point_class.gd" id="2_6i2es"]
+[ext_resource type="PackedScene" uid="uid://b0vrep6vcv5tb" path="res://hackable/security/drone/security_drone.tscn" id="2_6o6yx"]
+
+[resource]
+script = ExtResource("2_6i2es")
+scene_file = ExtResource("2_6o6yx")
+classname = "security_drone"
+description = "Security Drone."
+class_properties = Dictionary[String, Variant]({
+"move_timer": 4.0,
+"translation": Vector3(0, 0, 0),
+"wait_timer": 1.0
+})
+meta_properties = Dictionary[String, Variant]({
+"color": Color(0.92941177, 0.14509805, 0.30588236, 1),
+"size": AABB(-16, -16, -48, 16, 16, 48)
+})
+metadata/_custom_type_script = "uid://cxsqwtsqd8w33"

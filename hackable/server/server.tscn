@@ -20,7 +20,11 @@ shader_parameter/AlbedoTexture = ExtResource("3_objvc")
 [sub_resource type="QuadMesh" id="QuadMesh_2dd1r"]
 size = Vector2(3, 3)
 
-[node name="Server" type="Node3D" unique_id=615380423 node_paths=PackedStringArray("selection_instance", "hack_key", "selection_sound", "hack_sound")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_2dd1r"]
+size = Vector3(2.034, 2.963918, 1.87)
+
+[node name="Server" type="StaticBody3D" unique_id=253458709 node_paths=PackedStringArray("selection_instance", "hack_key", "selection_sound", "hack_sound")]
+collision_mask = 0
 script = ExtResource("1_581qi")
 selection_instance = NodePath("SelectionInstance")
 hack_key = NodePath("HackKey")
@@ -57,3 +61,7 @@ bus = &"SFX"
 [node name="HackSound" type="AudioStreamPlayer" parent="." unique_id=447765394]
 stream = ExtResource("6_0ot4e")
 bus = &"SFX"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=823134677]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.08395898, 0)
+shape = SubResource("BoxShape3D_2dd1r")

@@ -1,0 +1,142 @@
+[gd_scene format=3 uid="uid://0b1j8jbc7pdi"]
+
+[ext_resource type="Script" uid="uid://8d7j0vn6y0cx" path="res://menu/settings_menu/settings_menu.gd" id="1_8jy52"]
+[ext_resource type="Material" uid="uid://bahwak2x1d10g" path="res://global/post_process/vhs.tres" id="2_s4aaf"]
+[ext_resource type="AudioStream" uid="uid://cw4yibcx6shwn" path="res://menu/audio/text.wav" id="3_ayl6y"]
+[ext_resource type="AudioStream" uid="uid://b7o32hyrxelim" path="res://menu/audio/submit.wav" id="4_aeuww"]
+[ext_resource type="AudioStream" uid="uid://d23y8df2h6es2" path="res://menu/audio/error.wav" id="5_ayl6y"]
+[ext_resource type="AudioStream" uid="uid://cbrxlju4qtckb" path="res://global/music/booting_up.wav" id="6_aeuww"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2j7bf"]
+content_margin_left = 16.0
+content_margin_top = 4.0
+content_margin_right = 16.0
+content_margin_bottom = 4.0
+bg_color = Color(0.15294118, 0.09411765, 0.49411765, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fqw17"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+
+[node name="SettingsMenu" type="Control" unique_id=923142965 node_paths=PackedStringArray("system_label", "command_label", "input_container", "input_line", "log_label", "text_sound", "submit_sound", "error_sound")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8jy52")
+main_menu_path = "uid://dds0u5sm86l1o"
+system_label = NodePath("ProgramContainer/MarginContainer/TerminalContainer/SystemLabel")
+command_label = NodePath("ProgramContainer/MarginContainer/TerminalContainer/CommandLabel")
+input_container = NodePath("ProgramContainer/MarginContainer/TerminalContainer/InputContainer")
+input_line = NodePath("ProgramContainer/MarginContainer/TerminalContainer/InputContainer/LineEdit")
+log_label = NodePath("ProgramContainer/MarginContainer/TerminalContainer/LogLabel")
+text_sound = NodePath("TextSound")
+submit_sound = NodePath("SubmitSound")
+error_sound = NodePath("ErrorSound")
+
+[node name="ProgramContainer" type="VBoxContainer" parent="." unique_id=1982943946]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="NameLabel" type="Label" parent="ProgramContainer" unique_id=1320955995]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_2j7bf")
+text = "C:\\SYSTEM-1987\\SETTINGS.EXE"
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="ProgramContainer" unique_id=1910898411]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TerminalContainer" type="VBoxContainer" parent="ProgramContainer/MarginContainer" unique_id=320301822]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="SystemLabel" type="Label" parent="ProgramContainer/MarginContainer/TerminalContainer" unique_id=498532069]
+layout_mode = 2
+text = "System Configuration"
+vertical_alignment = 1
+uppercase = true
+
+[node name="CommandLabel" type="RichTextLabel" parent="ProgramContainer/MarginContainer/TerminalContainer" unique_id=1121389945]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "AVAILABLE COMMANDS:
+  SENSITIVITY <1-100> - MOUSE SENSITIVITY (DEFAULT = 10%)
+  MASTER <0-100>      - MASTER VOLUME (DEFAULT = 100%)
+  SFX <0-100>         - SFX VOLUME (DEFAULT = 100%)
+  MUSIC <0-100>       - MUSIC VOLUME (DEFAULT = 100%)
+  BACK                - RETURN TO THE MAIN MENU"
+fit_content = true
+scroll_active = false
+
+[node name="InputContainer" type="HBoxContainer" parent="ProgramContainer/MarginContainer/TerminalContainer" unique_id=815395657]
+layout_mode = 2
+
+[node name="LineLabel" type="Label" parent="ProgramContainer/MarginContainer/TerminalContainer/InputContainer" unique_id=507291996]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "C:\\SYSTEM-1987>"
+uppercase = true
+
+[node name="LineEdit" type="LineEdit" parent="ProgramContainer/MarginContainer/TerminalContainer/InputContainer" unique_id=1468037905]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxEmpty_fqw17")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_fqw17")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fqw17")
+placeholder_text = "TYPE HERE"
+context_menu_enabled = false
+emoji_menu_enabled = false
+selecting_enabled = false
+flat = true
+caret_blink = true
+
+[node name="LogLabel" type="RichTextLabel" parent="ProgramContainer/MarginContainer/TerminalContainer" unique_id=372053191]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "UNKNOWN COMMAND"
+fit_content = true
+
+[node name="VhsRect" type="ColorRect" parent="." unique_id=370914783]
+z_index = 5
+material = ExtResource("2_s4aaf")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextSound" type="AudioStreamPlayer" parent="." unique_id=569035916]
+stream = ExtResource("3_ayl6y")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="SubmitSound" type="AudioStreamPlayer" parent="." unique_id=687644157]
+stream = ExtResource("4_aeuww")
+bus = &"SFX"
+
+[node name="ErrorSound" type="AudioStreamPlayer" parent="." unique_id=2003866544]
+stream = ExtResource("5_ayl6y")
+bus = &"SFX"
+
+[node name="BootingUp" type="AudioStreamPlayer" parent="." unique_id=902612085]
+stream = ExtResource("6_aeuww")
+volume_db = -10.0
+autoplay = true
+bus = &"Music"

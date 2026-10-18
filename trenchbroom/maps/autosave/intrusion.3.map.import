@@ -1,0 +1,14 @@
+[remap]
+
+importer="func_godot.map"
+type="Resource"
+uid="uid://bjgmkhkpiwhhg"
+path="res://.godot/imported/intrusion.3.map-1fd71e2164e38cd8111977c91762ded4.tres"
+
+[deps]
+
+source_file="res://trenchbroom/maps/autosave/intrusion.3.map"
+dest_files=["res://.godot/imported/intrusion.3.map-1fd71e2164e38cd8111977c91762ded4.tres"]
+
+[params]
+

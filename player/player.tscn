@@ -53,6 +53,7 @@ lightmap_size_hint = Vector2i(11, 6)
 
 [node name="Player" type="CharacterBody3D" unique_id=1105059009 node_paths=PackedStringArray("collision_shape", "camera_pivot", "camera", "light_detector", "hack_ray_cast", "kill_sound")]
 collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_oul6g")
 collision_shape = NodePath("CollisionShape3D")
 camera_pivot = NodePath("CameraPivot")

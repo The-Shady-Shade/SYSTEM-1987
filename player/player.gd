@@ -21,6 +21,7 @@ func _input(event: InputEvent) -> void:
 	if selected_hackable:
 		if event.is_action_pressed("interact") && selected_hackable.active:
 			selected_hackable.hack()
+			camera.add_trauma(0.4)
 			selected_hackable = null
 
 func _process(delta: float) -> void:

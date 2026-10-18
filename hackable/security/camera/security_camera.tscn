@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://dpcyvwgulrihl"]
+
+[ext_resource type="Script" uid="uid://b46kb0fhgt6b3" path="res://hackable/security/camera/security_camera.gd" id="1_3cfh1"]
+[ext_resource type="PackedScene" uid="uid://cpr5yhyqdf4sq" path="res://hackable/security/camera/mesh/security_camera.blend" id="1_f4qfb"]
+[ext_resource type="PackedScene" uid="uid://u5lmg4slxolw" path="res://hackable/security/core/cone/cone.glb" id="2_aiiv0"]
+[ext_resource type="AudioStream" uid="uid://biwm7yupydv77" path="res://hackable/security/alert.wav" id="5_yvt0a"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pgf1o"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2dd1r"]
+size = Vector3(0.43, 0.22, 1.145)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8aw1e"]
+size = Vector3(0.216, 0.546, 0.228)
+
+[sub_resource type="SphereMesh" id="SphereMesh_2dd1r"]
+radius = 0.25
+height = 0.5
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_pgf1o"]
+points = PackedVector3Array(-0.00019574165, 1, -0.00019574165, 0.19498825, -1, -0.9808144, -0.00019574165, -1, -1, -0.19518405, -1, -0.9808144, -0.382733, -1, -0.92404073, -0.5555991, -1, -0.83163667, -0.7071261, -1, -0.7071261, -0.83163667, -1, -0.5555991, -0.92404073, -1, -0.382733, -0.9808144, -1, -0.19518405, -1, -1, -0.00019574165, -0.9808144, -1, 0.19498825, -0.92404073, -1, 0.38253725, -0.83163667, -1, 0.55540323, -0.7071261, -1, 0.7069303, -0.5555991, -1, 0.8314409, -0.382733, -1, 0.92384493, -0.19518405, -1, 0.9806186, -0.00019574165, -1, 1, 0.19498825, -1, 0.9806186, 0.38253725, -1, 0.92384493, 0.55540323, -1, 0.8314409, 0.7069303, -1, 0.7069303, 0.8314409, -1, 0.55540323, 0.92384493, -1, 0.38253725, 0.9806186, -1, 0.19498825, 1, -1, -0.00019574165, 0.9806186, -1, -0.19518405, 0.92384493, -1, -0.382733, 0.8314409, -1, -0.5555991, 0.7069303, -1, -0.7071261, 0.55540323, -1, -0.83163667, 0.38253725, -1, -0.92404073)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2dd1r"]
+size = Vector3(1.3, 1.6637578, 1.3)
+
+[node name="SecurityCamera" type="StaticBody3D" unique_id=1105522540 node_paths=PackedStringArray("pivot", "detection_area", "obstacle_ray_cast", "detection_light", "detection_timer", "alert_sound")]
+collision_mask = 0
+script = ExtResource("1_3cfh1")
+pivot = NodePath("BaseMesh/AttachmentMesh/PivotMesh")
+detection_area = NodePath("BaseMesh/AttachmentMesh/PivotMesh/Mesh/DetectionArea")
+obstacle_ray_cast = NodePath("BaseMesh/AttachmentMesh/PivotMesh/Mesh/ObstacleRayCast")
+detection_light = NodePath("BaseMesh/AttachmentMesh/PivotMesh/Mesh/DetectionLight")
+detection_timer = NodePath("DetectionTimer")
+alert_sound = NodePath("AlertSound")
+
+[node name="BaseMesh" type="MeshInstance3D" parent="." unique_id=1315074137]
+material_override = SubResource("StandardMaterial3D_pgf1o")
+mesh = SubResource("BoxMesh_2dd1r")
+
+[node name="AttachmentMesh" type="MeshInstance3D" parent="BaseMesh" unique_id=1799580567]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.26184082, 0)
+material_override = SubResource("StandardMaterial3D_pgf1o")
+mesh = SubResource("BoxMesh_8aw1e")
+
+[node name="PivotMesh" type="MeshInstance3D" parent="BaseMesh/AttachmentMesh" unique_id=795263532]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, -0.30938828, 0)
+material_override = SubResource("StandardMaterial3D_pgf1o")
+mesh = SubResource("SphereMesh_2dd1r")
+
+[node name="Mesh" parent="BaseMesh/AttachmentMesh/PivotMesh" unique_id=1780766110 instance=ExtResource("1_f4qfb")]
+transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 0, 0.11175582, 0)
+
+[node name="DetectionArea" type="Area3D" parent="BaseMesh/AttachmentMesh/PivotMesh/Mesh" unique_id=240127385]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0.76895976, 0)
+collision_layer = 0
+collision_mask = 2
+
+[node name="Cone" parent="BaseMesh/AttachmentMesh/PivotMesh/Mesh/DetectionArea" unique_id=456174795 instance=ExtResource("2_aiiv0")]
+transform = Transform3D(7.5, 0, 0, 0, -3.278354e-07, -7.5, 0, 7.5, -3.278354e-07, 0, -1.089, -8.162)
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BaseMesh/AttachmentMesh/PivotMesh/Mesh/DetectionArea" unique_id=369770294]
+transform = Transform3D(7.5, 1.1368684e-13, 5.684342e-14, 0, 0, -7.5000005, 1.1368684e-13, 7.5000005, 0, -9.947598e-14, -1.089, -8.162)
+shape = SubResource("ConvexPolygonShape3D_pgf1o")
+
+[node name="ObstacleRayCast" type="RayCast3D" parent="BaseMesh/AttachmentMesh/PivotMesh/Mesh" unique_id=1251872160]
+transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 0, -0.31626424, 0)
+target_position = Vector3(0, 0, -20)
+collision_mask = 3
+collide_with_areas = true
+debug_shape_custom_color = Color(0.9607843, 0.5372549, 0.25490198, 1)
+
+[node name="DetectionLight" type="SpotLight3D" parent="BaseMesh/AttachmentMesh/PivotMesh/Mesh" unique_id=798442353]
+transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 0, -0.31626424, 0)
+light_color = Color(1, 0.38039216, 0.011764706, 1)
+light_energy = 10.0
+shadow_enabled = true
+shadow_bias = 0.125
+spot_range = 17.459663
+spot_attenuation = 0.0
+spot_angle = 25.56896
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1490465088]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6816404, 0)
+shape = SubResource("BoxShape3D_2dd1r")
+
+[node name="DetectionTimer" type="Timer" parent="." unique_id=163963526]
+wait_time = 0.25
+autostart = true
+
+[node name="AlertSound" type="AudioStreamPlayer" parent="." unique_id=1198912144]
+stream = ExtResource("5_yvt0a")
+bus = &"SFX"

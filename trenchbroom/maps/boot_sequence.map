@@ -575,24 +575,6 @@
 }
 // entity 1
 {
-"classname" "enemy_security_camera"
-"origin" "-272 -8 288"
-"angle" "180"
-}
-// entity 2
-{
-"classname" "enemy_security_camera"
-"origin" "-544 -424 332"
-"angle" "180"
-}
-// entity 3
-{
-"classname" "enemy_security_camera"
-"origin" "-960 -544 332"
-"angle" "90"
-}
-// entity 4
-{
 "classname" "mover_door"
 "target_name" "First"
 "translation" "0.0 7.5 0.0"
@@ -606,19 +588,13 @@
 ( -1140 144 48 ) ( -1140 144 49 ) ( -1140 145 48 ) door [ 0 1 0 -32 ] [ 0 0 -1 -56 ] 270 2 2
 }
 }
-// entity 5
+// entity 2
 {
 "classname" "server"
 "origin" "-544 -424 192"
 "target_name" "First"
 }
-// entity 6
-{
-"classname" "enemy_security_camera"
-"origin" "-1200 -320 364"
-"angle" "180"
-}
-// entity 7
+// entity 3
 {
 "classname" "area_exit"
 // brush 0
@@ -631,9 +607,33 @@
 ( -1680 -336 160 ) ( -1680 -336 161 ) ( -1680 -335 160 ) exit [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
 }
-// entity 8
+// entity 4
 {
 "classname" "player"
 "origin" "0 0 32"
+"angle" "180"
+}
+// entity 5
+{
+"classname" "security_camera"
+"origin" "-272 -8 284"
+"angle" "180"
+}
+// entity 6
+{
+"classname" "security_camera"
+"origin" "-960 -544 332"
+"angle" "90"
+}
+// entity 7
+{
+"classname" "security_camera"
+"origin" "-544 -424 332"
+"angle" "180"
+}
+// entity 8
+{
+"classname" "security_camera"
+"origin" "-1200 -320 364"
 "angle" "180"
 }
