@@ -2,11 +2,11 @@
 
 [ext_resource type="Environment" uid="uid://ct72uddxu1c02" path="res://global/world_environment.tres" id="1_p8ggy"]
 [ext_resource type="Script" uid="uid://cwu5cf7a0awcd" path="res://addons/func_godot/src/map/func_godot_map.gd" id="1_tpi8w"]
+[ext_resource type="Script" uid="uid://osr7dl5klhfy" path="res://maps/map.gd" id="1_v7pe2"]
 [ext_resource type="Resource" uid="uid://bkhxcqsquw1yg" path="res://addons/func_godot/func_godot_default_map_settings.tres" id="2_p8ggy"]
 [ext_resource type="Material" uid="uid://b270htunls1uo" path="res://trenchbroom/materials/base.tres" id="4_jn5b1"]
 [ext_resource type="PackedScene" uid="uid://b5rd47gixd0ph" path="res://player/player.tscn" id="5_vqyqk"]
 [ext_resource type="PackedScene" uid="uid://dpcyvwgulrihl" path="res://hackable/security/camera/security_camera.tscn" id="6_r1m5i"]
-[ext_resource type="AudioStream" uid="uid://cjyyjt75csiag" path="res://global/music/winter_ai.wav" id="7_ino28"]
 [ext_resource type="PackedScene" uid="uid://b0vrep6vcv5tb" path="res://hackable/security/drone/security_drone.tscn" id="7_sh75n"]
 [ext_resource type="AudioStream" uid="uid://ckqymvjsr1o13" path="res://global/map_transition.wav" id="8_csxgv"]
 [ext_resource type="PackedScene" uid="uid://da66t48fiam1a" path="res://hackable/server/server.tscn" id="8_v15n6"]
@@ -550,6 +550,7 @@ _surfaces = [{
 points = PackedVector3Array(6, 2.25, 9.5, 6, -2.25, 9.5, -6, 2.25, 9.5, -6, -2.25, 9.5, 6, 2.25, -9.5, 6, -2.25, -9.5, -6, 2.25, -9.5, -6, -2.25, -9.5)
 
 [node name="Intrusion" type="Node3D" unique_id=1960610578]
+script = ExtResource("1_v7pe2")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2078613475]
 environment = ExtResource("1_p8ggy")
@@ -1163,12 +1164,6 @@ mesh = SubResource("ArrayMesh_rbik2")
 
 [node name="entity_32_brush_0_collision_shape" type="CollisionShape3D" parent="FuncGodotMap/entity_32_area_exit" unique_id=577584331]
 shape = SubResource("ConvexPolygonShape3D_bgxjw")
-
-[node name="WinterAI" type="AudioStreamPlayer" parent="." unique_id=791398649]
-stream = ExtResource("7_ino28")
-volume_db = -10.0
-autoplay = true
-bus = &"Music"
 
 [node name="MapTransitionSound" type="AudioStreamPlayer" parent="." unique_id=1395117458]
 stream = ExtResource("8_csxgv")

@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cjyyjt75csiag"
-path="res://.godot/imported/winter_ai.wav-be5c7b1812b7db8cac481fa2960249bb.sample"
+path="res://.godot/imported/winter_ai.wav-52b5482e6460ca7c42a3bafbaafd490b.sample"
 
 [deps]
 
-source_file="res://global/music/winter_ai.wav"
-dest_files=["res://.godot/imported/winter_ai.wav-be5c7b1812b7db8cac481fa2960249bb.sample"]
+source_file="res://global/audio/winter_ai.wav"
+dest_files=["res://.godot/imported/winter_ai.wav-52b5482e6460ca7c42a3bafbaafd490b.sample"]
 
 [params]
 

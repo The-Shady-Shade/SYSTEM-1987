@@ -1,4 +1,5 @@
 extends CanvasLayer
+signal transition_finished()
 
 @export var dissolve_rect: ColorRect
 @export var animation: AnimationPlayer
@@ -22,3 +23,4 @@ func change_scene_deffered(scene_path: String) -> void:
 	get_tree().current_scene = current_scene
 	animation.play("Dissolve")
 	active = false
+	transition_finished.emit()

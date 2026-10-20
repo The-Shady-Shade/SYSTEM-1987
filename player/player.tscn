@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://b7l8vbu5fvmi6" path="res://player/fsm/jump_player_state.gd" id="6_g6k8r"]
 [ext_resource type="Material" uid="uid://bahwak2x1d10g" path="res://global/post_process/vhs.tres" id="7_32hag"]
 [ext_resource type="Script" uid="uid://dqomnaujqfoxc" path="res://player/fsm/fall_player_state.gd" id="7_boad6"]
+[ext_resource type="PackedScene" uid="uid://dj80g76bk681v" path="res://player/ui/pause_menu.tscn" id="7_c35mf"]
 [ext_resource type="Texture2D" uid="uid://cavn31q64bnk2" path="res://player/ui/light_bar/light_bar_under.png" id="7_e7oew"]
 [ext_resource type="Texture2D" uid="uid://cwhgsfft2x01s" path="res://player/ui/light_bar/light_bar_progress.png" id="8_c35mf"]
 [ext_resource type="AudioStream" uid="uid://5wpt57lnap6y" path="res://player/kill.wav" id="17_tqiix"]
@@ -28,18 +29,18 @@ seed = 52
 noise = SubResource("FastNoiseLite_32hag")
 seamless = true
 
-[sub_resource type="Gradient" id="Gradient_e7oew"]
+[sub_resource type="Gradient" id="Gradient_c35mf"]
 interpolation_mode = 1
 offsets = PackedFloat32Array(0, 0.0625, 0.125)
 colors = PackedColorArray(0.15294118, 0.09411765, 0.49411765, 1, 0.92941177, 0.14509805, 0.30588236, 1, 0.96862745, 0.96862745, 1, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_c35mf"]
-gradient = SubResource("Gradient_e7oew")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_65viv"]
+gradient = SubResource("Gradient_c35mf")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8t03j"]
 render_priority = 0
 shader = ExtResource("3_8t03j")
-shader_parameter/palette = SubResource("GradientTexture1D_c35mf")
+shader_parameter/palette = SubResource("GradientTexture1D_65viv")
 shader_parameter/rows = 1.0
 shader_parameter/cols = 2.0
 shader_parameter/dither_size = 0.0
@@ -89,6 +90,7 @@ colors = Array[Color]([Color(0.15294118, 0.09411765, 0.49411765, 1), Color(0.929
 [node name="HackRayCast" type="RayCast3D" parent="CameraPivot" unique_id=848694948]
 target_position = Vector3(0, 0, -10)
 collision_mask = 9
+hit_from_inside = true
 collide_with_areas = true
 
 [node name="UI" type="Control" parent="." unique_id=564714222 node_paths=PackedStringArray("player", "light_bar")]
@@ -102,6 +104,8 @@ mouse_filter = 2
 script = ExtResource("5_ebec5")
 player = NodePath("..")
 light_bar = NodePath("LightBar")
+
+[node name="PauseMenu" parent="UI" unique_id=1470045095 instance=ExtResource("7_c35mf")]
 
 [node name="LightBar" type="TextureProgressBar" parent="UI" unique_id=221932163]
 custom_minimum_size = Vector2(40, 18)

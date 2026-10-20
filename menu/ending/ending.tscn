@@ -5,7 +5,6 @@
 [ext_resource type="AudioStream" uid="uid://cw4yibcx6shwn" path="res://menu/audio/text.wav" id="3_pwls7"]
 [ext_resource type="AudioStream" uid="uid://b7o32hyrxelim" path="res://menu/audio/submit.wav" id="4_2sjlo"]
 [ext_resource type="AudioStream" uid="uid://d23y8df2h6es2" path="res://menu/audio/error.wav" id="5_p7dre"]
-[ext_resource type="AudioStream" uid="uid://cbrxlju4qtckb" path="res://global/music/booting_up.wav" id="6_fr41k"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5rhla"]
 content_margin_left = 16.0
@@ -126,9 +125,3 @@ bus = &"SFX"
 [node name="ErrorSound" type="AudioStreamPlayer" parent="." unique_id=714452257]
 stream = ExtResource("5_p7dre")
 bus = &"SFX"
-
-[node name="BootingUp" type="AudioStreamPlayer" parent="." unique_id=1653133326]
-stream = ExtResource("6_fr41k")
-volume_db = -10.0
-autoplay = true
-bus = &"Music"

@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cslc151surm6f"]
+
+[ext_resource type="Script" uid="uid://dfxhvai2vxhgo" path="res://global/audio/audio_manager.gd" id="1_sev32"]
+[ext_resource type="AudioStream" uid="uid://cbrxlju4qtckb" path="res://global/audio/booting_up.wav" id="2_auu5n"]
+[ext_resource type="AudioStream" uid="uid://cjyyjt75csiag" path="res://global/audio/winter_ai.wav" id="2_bwrov"]
+
+[node name="AudioManager" type="Node" unique_id=632176883 node_paths=PackedStringArray("winter_ai", "booting_up")]
+script = ExtResource("1_sev32")
+winter_ai = NodePath("WinterAI")
+booting_up = NodePath("BootingUp")
+
+[node name="WinterAI" type="AudioStreamPlayer" parent="." unique_id=794888159]
+stream = ExtResource("2_bwrov")
+volume_db = -15.0
+bus = &"Music"
+
+[node name="BootingUp" type="AudioStreamPlayer" parent="." unique_id=996286872]
+stream = ExtResource("2_auu5n")
+volume_db = -15.0
+bus = &"Music"
