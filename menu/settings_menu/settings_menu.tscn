@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://0b1j8jbc7pdi"]
 
 [ext_resource type="Script" uid="uid://8d7j0vn6y0cx" path="res://menu/settings_menu/settings_menu.gd" id="1_8jy52"]
-[ext_resource type="Material" uid="uid://bahwak2x1d10g" path="res://global/post_process/vhs.tres" id="2_s4aaf"]
+[ext_resource type="Material" uid="uid://4lm33fdin5kc" path="res://menu/vhs_menu.tres" id="2_ayl6y"]
 [ext_resource type="AudioStream" uid="uid://cw4yibcx6shwn" path="res://menu/audio/text.wav" id="3_ayl6y"]
 [ext_resource type="AudioStream" uid="uid://b7o32hyrxelim" path="res://menu/audio/submit.wav" id="4_aeuww"]
 [ext_resource type="AudioStream" uid="uid://d23y8df2h6es2" path="res://menu/audio/error.wav" id="5_ayl6y"]
@@ -36,6 +36,15 @@ log_label = NodePath("ProgramContainer/MarginContainer/TerminalContainer/LogLabe
 text_sound = NodePath("TextSound")
 submit_sound = NodePath("SubmitSound")
 error_sound = NodePath("ErrorSound")
+
+[node name="BackgroundRect" type="ColorRect" parent="." unique_id=372790924]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.023529412, 0.011764706, 0.14117648, 1)
 
 [node name="ProgramContainer" type="VBoxContainer" parent="." unique_id=1982943946]
 layout_mode = 1
@@ -112,7 +121,7 @@ fit_content = true
 
 [node name="VhsRect" type="ColorRect" parent="." unique_id=370914783]
 z_index = 5
-material = ExtResource("2_s4aaf")
+material = ExtResource("2_ayl6y")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

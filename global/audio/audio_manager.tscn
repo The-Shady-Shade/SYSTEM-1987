@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://cjyyjt75csiag" path="res://global/audio/winter_ai.wav" id="2_bwrov"]
 
 [node name="AudioManager" type="Node" unique_id=632176883 node_paths=PackedStringArray("winter_ai", "booting_up")]
+process_mode = 3
 script = ExtResource("1_sev32")
 winter_ai = NodePath("WinterAI")
 booting_up = NodePath("BootingUp")

@@ -18,6 +18,7 @@ func change_scene_deffered(scene_path: String) -> void:
 	animation.play_backwards("Dissolve")
 	await animation.animation_finished
 	current_scene.free()
+	get_tree().paused = false
 	current_scene = ResourceLoader.load(scene_path).instantiate()
 	get_tree().root.add_child(current_scene)
 	get_tree().current_scene = current_scene

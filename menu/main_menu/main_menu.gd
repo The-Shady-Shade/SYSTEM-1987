@@ -1,6 +1,5 @@
 class_name MainMenu extends Menu
 
-@export_file("*.tscn") var map_path: String = ""
 @export_file("*.tscn") var settings_path: String = ""
 @export var boot_label: RichTextLabel = null
 @export var system_label: Label = null
@@ -12,6 +11,8 @@ var loading: bool = true
 var starting: bool = false
 
 func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	
 	boot_label.text = ""
 	command_label.text = ""
 	input_line.text = ""
@@ -80,7 +81,7 @@ func on_input_line_text_submitted(input: String) -> void:
 			await type_line(log_label, "INITIALIZING THE PROGRAM...")
 			await get_tree().create_timer(0.8).timeout
 
-			SceneTransition.change_scene(map_path)
+			SceneTransition.change_scene(GameManager.maps[GameManager.map_idx])
 		"SETTINGS":
 			starting = true
 			input_line.editable = false

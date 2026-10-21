@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dds0u5sm86l1o"]
 
 [ext_resource type="Script" uid="uid://c1p5sno2ou4ii" path="res://menu/main_menu/main_menu.gd" id="1_qs6vt"]
-[ext_resource type="Material" uid="uid://bahwak2x1d10g" path="res://global/post_process/vhs.tres" id="2_7r8i1"]
+[ext_resource type="Material" uid="uid://4lm33fdin5kc" path="res://menu/vhs_menu.tres" id="2_winya"]
 [ext_resource type="AudioStream" uid="uid://cw4yibcx6shwn" path="res://menu/audio/text.wav" id="3_winya"]
 [ext_resource type="AudioStream" uid="uid://b7o32hyrxelim" path="res://menu/audio/submit.wav" id="4_prid6"]
 [ext_resource type="AudioStream" uid="uid://d23y8df2h6es2" path="res://menu/audio/error.wav" id="5_x87vx"]
@@ -28,7 +28,6 @@ offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qs6vt")
-map_path = "uid://buo1730adb02i"
 settings_path = "uid://0b1j8jbc7pdi"
 boot_label = NodePath("ProgramContainer/MarginContainer/TerminalContainer/BootLabel")
 system_label = NodePath("ProgramContainer/MarginContainer/TerminalContainer/SystemLabel")
@@ -39,6 +38,15 @@ log_label = NodePath("ProgramContainer/MarginContainer/TerminalContainer/LogLabe
 text_sound = NodePath("TextSound")
 submit_sound = NodePath("SubmitSound")
 error_sound = NodePath("ErrorSound")
+
+[node name="BackgroundRect" type="ColorRect" parent="." unique_id=137452318]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.023529412, 0.011764706, 0.14117648, 1)
 
 [node name="ProgramContainer" type="VBoxContainer" parent="." unique_id=635083001]
 layout_mode = 1
@@ -127,7 +135,7 @@ fit_content = true
 
 [node name="VhsRect" type="ColorRect" parent="." unique_id=301367223]
 z_index = 5
-material = ExtResource("2_7r8i1")
+material = ExtResource("2_winya")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

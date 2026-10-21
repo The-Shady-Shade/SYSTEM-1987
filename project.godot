@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="SYSTEM-1987"
-config/version="1.1.0"
+config/version="1.0.1"
 config/tags=PackedStringArray("3d", "itch_io", "ludum_dare")
 run/main_scene="uid://dds0u5sm86l1o"
 config/features=PackedStringArray("4.7", "GL Compatibility")

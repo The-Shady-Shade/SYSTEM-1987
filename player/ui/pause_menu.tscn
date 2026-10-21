@@ -2,10 +2,38 @@
 
 [ext_resource type="Script" uid="uid://bnltwiox21rt3" path="res://player/ui/pause_menu.gd" id="1_1ese7"]
 [ext_resource type="Shader" uid="uid://byenef5p45ncs" path="res://global/post_process/blur.gdshader" id="2_hfurr"]
+[ext_resource type="PackedScene" uid="uid://0b1j8jbc7pdi" path="res://menu/settings_menu/settings_menu.tscn" id="3_hfurr"]
+[ext_resource type="AudioStream" uid="uid://dhhy1uq3p3hum" path="res://player/ui/pause_open.wav" id="4_eqt3x"]
+[ext_resource type="Shader" uid="uid://c8j86r0e6uh0o" path="res://global/post_process/vhs.gdshader" id="4_hm8ty"]
+[ext_resource type="AudioStream" uid="uid://dml432dgdebwi" path="res://player/ui/pause_close.wav" id="5_yyhm0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e7oew"]
 shader = ExtResource("2_hfurr")
 shader_parameter/lod = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_23e7w"]
+shader = ExtResource("4_hm8ty")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.0
+shader_parameter/scanlines_width = 0.25
+shader_parameter/grille_opacity = 0.0
+shader_parameter/resolution = Vector2(640, 360)
+shader_parameter/pixelate = true
+shader_parameter/roll = false
+shader_parameter/roll_speed = 8.0
+shader_parameter/roll_size = 0.0
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.05
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/aberration = 0.01000004797499998
+shader_parameter/brightness = 1.0
+shader_parameter/discolor = false
+shader_parameter/warp_amount = 0.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.1
+shader_parameter/vignette_opacity = 0.5
 
 [sub_resource type="Animation" id="Animation_bjvpn"]
 resource_name = "Blur"
@@ -21,6 +49,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 0.800000038]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SettingsMenu:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_s7qer"]
@@ -38,6 +78,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SettingsMenu:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g4c7l"]
 _data = {
@@ -45,11 +97,14 @@ _data = {
 &"RESET": SubResource("Animation_s7qer")
 }
 
-[node name="PauseMenu" type="CanvasLayer" unique_id=1470045095 node_paths=PackedStringArray("animation")]
+[node name="PauseMenu" type="CanvasLayer" unique_id=1470045095 node_paths=PackedStringArray("settings_menu", "animation", "pause_open_sound", "pause_close_sound")]
 process_mode = 3
 layer = 10
 script = ExtResource("1_1ese7")
+settings_menu = NodePath("SettingsMenu")
 animation = NodePath("AnimationPlayer")
+pause_open_sound = NodePath("PauseOpenSound")
+pause_close_sound = NodePath("PauseCloseSound")
 
 [node name="BlurRect" type="ColorRect" parent="." unique_id=1027041057]
 z_index = -5
@@ -60,5 +115,29 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="SettingsMenu" parent="." unique_id=923142965 instance=ExtResource("3_hfurr")]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(640, 234)
+anchors_preset = 14
+anchor_top = 0.5
+anchor_bottom = 0.5
+pause = true
+
+[node name="VhsRect" parent="SettingsMenu" index="2" unique_id=370914783]
+visible = false
+material = SubResource("ShaderMaterial_23e7w")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=346920625]
 libraries/ = SubResource("AnimationLibrary_g4c7l")
+
+[node name="PauseOpenSound" type="AudioStreamPlayer" parent="." unique_id=1098983195]
+stream = ExtResource("4_eqt3x")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="PauseCloseSound" type="AudioStreamPlayer" parent="." unique_id=1073872252]
+stream = ExtResource("5_yyhm0")
+volume_db = -5.0
+bus = &"SFX"
+
+[editable path="SettingsMenu"]

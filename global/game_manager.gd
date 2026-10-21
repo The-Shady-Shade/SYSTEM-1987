@@ -13,5 +13,7 @@ var camera_shake: bool = true
 func map_transition() -> void:
 	if get_tree().current_scene.has_node("MapTransitionSound"): get_tree().current_scene.get_node("MapTransitionSound").play()
 	map_idx += 1
-	if map_idx >= maps.size(): SceneTransition.change_scene(ending_path)
+	if map_idx >= maps.size():
+		map_idx = 0
+		SceneTransition.change_scene(ending_path)
 	else: SceneTransition.change_scene(maps[map_idx])

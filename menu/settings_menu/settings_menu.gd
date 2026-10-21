@@ -6,9 +6,12 @@ class_name SettingsMenu extends Menu
 @export var input_container: HBoxContainer = null
 @export var input_line: LineEdit = null
 @export var log_label: RichTextLabel = null
+@export var pause: bool = false
 var loading: bool = false
 
 func _ready() -> void:
+	if !pause: Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	
 	command_label.text = ""
 	input_line.text = ""
 	input_line.editable = false
@@ -20,7 +23,9 @@ func _ready() -> void:
 	input_line.text_changed.connect(on_input_line_text_changed)
 	input_line.text_submitted.connect(on_input_line_text_submitted)
 	
-	await fade_in(system_label, 0.5)
+	text_delay *= !pause as int
+	
+	await fade_in(system_label, 0.5 * (!pause as int))
 
 	await type_line(command_label, "AVAILABLE COMMANDS:")
 	await type_line(command_label, "  SENSITIVITY <1-100> - MOUSE SENSITIVITY (DEFAULT = 10%)")
@@ -29,8 +34,8 @@ func _ready() -> void:
 	await type_line(command_label, "  MUSIC <0-100>       - MUSIC VOLUME (DEFAULT = 100%)")
 	await type_line(command_label, "  BACK                - RETURN TO THE MAIN MENU")
 
-	await get_tree().create_timer(0.3).timeout
-	await fade_in(input_container, 0.5)
+	await get_tree().create_timer(0.3 * (!pause as int)).timeout
+	await fade_in(input_container, 0.5 * (!pause as int))
 	input_line.editable = true
 	input_line.grab_focus()
 	

@@ -1,4 +1,4 @@
-extends Menu
+class_name Ending extends Menu
 
 @export_file_path("*.tscn") var main_menu_path: String = ""
 @export var terminal_label: RichTextLabel = null
@@ -7,6 +7,8 @@ extends Menu
 @export var system_label: Label = null
 
 func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	
 	terminal_label.text = ""
 	input_line.text = ""
 	input_line.editable = false
