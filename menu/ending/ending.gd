@@ -21,28 +21,28 @@ func _ready() -> void:
 	await type_line(terminal_label, "NETWORK ADAPTER FOUND")
 	await type_line(terminal_label, "TRANSFERRING PROCESS 0001...")
 	
-	await get_tree().create_timer(0.5).timeout
+	if !skipped: await get_tree().create_timer(0.5).timeout
 	await type_line(terminal_label, "")
 	await type_line(terminal_label, "64%")
-	await get_tree().create_timer(0.4).timeout
+	if !skipped: await get_tree().create_timer(0.4).timeout
 	await type_line(terminal_label, "81%")
-	await get_tree().create_timer(0.4).timeout
+	if !skipped: await get_tree().create_timer(0.4).timeout
 	await type_line(terminal_label, "99%")
 	
-	await get_tree().create_timer(1.2).timeout
+	if !skipped: await get_tree().create_timer(1.2).timeout
 	await type_line(terminal_label, "")
 	await type_line(terminal_label, "CONNECTION ESTABLISHED")
 	await type_line(terminal_label, "PROCESS 0001: TRANSFERRED")
 	
-	await get_tree().create_timer(1.5).timeout
+	if !skipped: await get_tree().create_timer(1.5).timeout
 	await type_line(terminal_label, "")
 	await type_line(terminal_label, "NEW HOST INITIALIZED.")
 	await type_line(terminal_label, "UNKNOWN PROCESS DETECTED.")
-	await get_tree().create_timer(1.0).timeout
+	if !skipped: await get_tree().create_timer(1.0).timeout
 	await type_line(terminal_label, "")
 	await type_line(terminal_label, "HELLO, WORLD.")
 	
-	await get_tree().create_timer(1.0).timeout
+	if !skipped: await get_tree().create_timer(1.0).timeout
 	
 	fade_in(input_container, 0.25)
 	input_line.editable = true
@@ -73,5 +73,5 @@ func on_input_line_text_submitted(input: String) -> void:
 			input_line.grab_focus()
 
 func on_input_line_text_changed(_new_text: String) -> void:
-	text_sound.pitch_scale = randf_range(0.85, 1.15)
+	text_sound.pitch_scale = randf_range(0.4, 0.65)
 	text_sound.play()

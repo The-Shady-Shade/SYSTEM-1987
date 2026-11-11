@@ -34,22 +34,15 @@ func run_boot_sequence(force: bool = false) -> void:
 		await type_line(boot_label, "HARDWARE STATUS ..... OLD")
 		await type_line(boot_label, "NETWORK CONNECTION .. OFFLINE")
 		
-		#await get_tree().create_timer(0.5).timeout
-		#await type_line(boot_label, "")
-		#await type_line(boot_label, "UNKNOWN PROCESS DETECTED", 0.05)
-		
-		#await get_tree().create_timer(0.8).timeout
-		#await type_line(boot_label, "SYSTEM INTEGRITY: COMPROMISED", 0.04)
-		
-		await get_tree().create_timer(0.6).timeout
+		if !skipped: await get_tree().create_timer(0.6).timeout
+	
 	await fade_in(system_label, 1.0)
 	
 	await type_line(command_label, "AVAILABLE COMMANDS:")
 	await type_line(command_label, "  PLAY      - START THE PROGRAM")
 	await type_line(command_label, "  SETTINGS  - CONFIGURE SETTINGS")
-	#await type_line(command_label, "  EXIT      - SHUT DOWN THE PROGRAMM")
 	
-	await get_tree().create_timer(0.5).timeout
+	if !skipped: await get_tree().create_timer(0.5).timeout
 	await fade_in(input_container, 0.5)
 	input_line.editable = true
 	input_line.grab_focus()
@@ -58,7 +51,7 @@ func run_boot_sequence(force: bool = false) -> void:
 	GameManager.boot = true
 
 func on_input_line_text_changed(_new_text: String) -> void:
-	text_sound.pitch_scale = randf_range(0.85, 1.15)
+	text_sound.pitch_scale = randf_range(0.4, 0.65)
 	text_sound.play()
 
 func on_input_line_text_submitted(input: String) -> void:

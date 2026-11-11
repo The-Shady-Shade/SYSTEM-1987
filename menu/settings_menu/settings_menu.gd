@@ -9,6 +9,9 @@ class_name SettingsMenu extends Menu
 @export var pause: bool = false
 var loading: bool = false
 
+func _process(_delta: float) -> void:
+	pause = pause || skipped
+
 func _ready() -> void:
 	if !pause: Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	
@@ -132,5 +135,5 @@ func on_input_line_text_submitted(input: String) -> void:
 	input_line.grab_focus()
 
 func on_input_line_text_changed(_new_text: String) -> void:
-	text_sound.pitch_scale = randf_range(0.85, 1.15)
+	text_sound.pitch_scale = randf_range(0.4, 0.65)
 	text_sound.play()
